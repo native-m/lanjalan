@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background2D
+    uniqueID: 4141516885
+    locked: 0
+  - name: PuzzleMask
+    uniqueID: 1631020999
+    locked: 0
+  - name: GameObject2D
+    uniqueID: 43211161
+    locked: 0
+  - name: UI
+    uniqueID: 1485276319
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
