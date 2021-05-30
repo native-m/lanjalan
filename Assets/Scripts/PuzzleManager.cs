@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
 {
-    private List<PuzzlePiece> puzzlePieces = new List<PuzzlePiece>();
+    private PuzzlePiece[] puzzlePieces;
 
     private int score = 0;
 
-    public void AddPiece(PuzzlePiece puzzlePiece)
+    private void Start() 
     {
-        puzzlePieces.Add(puzzlePiece);
+        puzzlePieces = FindObjectsOfType<PuzzlePiece>();    
+    }
+
+    public void AddScore()
+    {
+        score +=1;
+        print(score);
     }
 
     public void ResetGame()

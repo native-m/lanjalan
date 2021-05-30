@@ -44,6 +44,9 @@ TagManager:
   - name: PuzzleMask
     uniqueID: 1631020999
     locked: 0
+  - name: SeekBase
+    uniqueID: 1481142777
+    locked: 0
   - name: GameObject2D
     uniqueID: 43211161
     locked: 0

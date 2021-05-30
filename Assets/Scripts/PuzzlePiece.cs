@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PuzzlePiece : MonoBehaviour
 {
-    private PuzzleManager manager;
-
     [SerializeField] private GameObject pieceMask;
     private float snapThreshold = 0.5f;
     private Vector3 initPosition;
@@ -17,9 +15,6 @@ public class PuzzlePiece : MonoBehaviour
     private void Start()
     {
         initPosition = transform.position;
-
-        manager = FindObjectOfType<PuzzleManager>();
-        manager.AddPiece(this);
     }
 
     private void Update() 
@@ -56,6 +51,7 @@ public class PuzzlePiece : MonoBehaviour
             {
                 transform.position = new Vector3(pieceMask.transform.position.x, pieceMask.transform.position.y, transform.position.z);
                 isDone = true;
+                transform.parent.gameObject.GetComponent<PuzzleManager>().AddScore();
             }
         }
         
