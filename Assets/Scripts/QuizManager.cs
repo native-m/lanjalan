@@ -10,7 +10,9 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] optionTexts;
     [SerializeField] private Slider timerBar;
 
-    private float timer = 40f;
+    [SerializeField] private Animator roroAnimator;
+
+    private float timer = 10f;
 
     private int quizIndex = 0;
     private string[] questionArray = 
@@ -55,6 +57,8 @@ public class QuizManager : MonoBehaviour
         {
             optionTexts[i].SetText(optionArray[quizIndex, i]);
         }
+        timer = 10f;
+        roroAnimator.Play("RoroQuizBertanya");
     }
 
     public void Answering(int choice)
