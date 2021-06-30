@@ -8,6 +8,8 @@ public class QuizManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private TextMeshProUGUI[] optionTexts;
+    [SerializeField] private Button[] optionButtons;
+    [SerializeField] private TextMeshProUGUI respondText;
     [SerializeField] private Slider timerBar;
 
     [SerializeField] private Animator roroAnimator;
@@ -17,17 +19,17 @@ public class QuizManager : MonoBehaviour
     private int quizIndex = 0;
     private string[] questionArray = 
     {
-        "Big PP Nation",
-        "YEAAHHHHH BABBY THAT'S WHAT I'M TALKING ABOUT",
-        "BRRUUHHHH"
+        "Siapa nama dari raja kerjaan ini?",
+        "Apa nama desa ini",
+        "Kerajaan mataram kuno sedang berperang melawan kerajaan apa  ?"
     };
     private string[,] optionArray =
     {
-        {"HentiBoy", "TheMonk", "Monkee"},
-        {"G", "U", "H"},
-        {"BRRRRRUUUUUUUUUUUUU", "UUUUUUUUUUUUUUUUUU", "UUUUUUUUUHHHHHHH"},
+        {"Prabu Baka", "Prabu Wongso", "Ayam Wuruk"},
+        {"Desa Bugisan", "Desa Hijau", "Desa Perahu"},
+        {"Kerajaan Pengging", "Kerajaan Ponggang", "Kerajaan Pinggung"},
     };
-    private int[] answerArray = {2, 1, 0};
+    private int[] answerArray = {0, 0, 0};
 
     private void Start() 
     {
@@ -66,12 +68,20 @@ public class QuizManager : MonoBehaviour
         if(choice == answerArray[quizIndex])
         {
             quizIndex++;
-            if (quizIndex == questionArray.Length)
+            if(quizIndex == questionArray.Length)
             {
                 quizIndex = 0;
+                foreach(Button button in optionButtons)
+                {
+                    button.interactable = false;
+                }
+                respondText.SetText("Wow kamu sudah seperti penduduk desa ini saja! Kamu cocok untuk tinggal di desa ini.");
+                timer = 0f;
             }
-
-            UpdateQuiz();
+            else
+            {
+                UpdateQuiz();
+            }
         }
     }
 }
