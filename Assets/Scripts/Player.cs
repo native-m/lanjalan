@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    CharacterController controller;
+    Rigidbody body;
+    Vector3 direction = Vector3.zero;
+
     Animator animator;
 
-    public float moveSpeed = 6.0f;
-
-    public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
+    float moveSpeed = 6.0f;
 
     void Start() 
     {
-        controller = GetComponent<CharacterController>();
+        body = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
 
@@ -42,15 +41,18 @@ public class Player : MonoBehaviour
             }
         }
         
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        direction = new Vector3(horizontal, 0f, vertical).normalized;
+    }
 
+    void FixedUpdate() 
+    {
         if(direction.magnitude >= 0.1f)
         {
-            // float forwardAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            // float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, forwardAngle, ref turnSmoothVelocity, turnSmoothTime);
-            // transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            controller.Move(direction * moveSpeed * Time.deltaTime);
+            body.velocity = new Vector3(direction.x * moveSpeed, body.velocity.y, direction.z * moveSpeed);
+        }
+        else
+        {
+            body.velocity = new Vector3(0f, body.velocity.y, 0f);
         }
     }
 }
