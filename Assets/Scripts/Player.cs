@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
+        // animator.SetFloat("MoveX", horizontal);
+        // animator.SetFloat("MoveZ", vertical);
+
         if (horizontal != 0)
         {
             animator.SetFloat("MoveX", horizontal);
@@ -40,6 +43,21 @@ public class Player : MonoBehaviour
                 animator.SetFloat("MoveX", horizontal);
             }
         }
+
+        if (horizontal <= -0.5 || horizontal >= 0.5 || vertical <= -0.5 || vertical >= 0.5)
+        {
+            animator.SetFloat("LastMoveX", horizontal);
+            animator.SetFloat("LastMoveZ", vertical);
+        }
+
+        // if (horizontal <= -0.5 || horizontal >= 0.5)
+        // {
+        //     animator.SetFloat("LastMoveX", horizontal);
+        // }
+        // if (vertical <= -0.5 || vertical >= 0.5)
+        // {
+        //     animator.SetFloat("LastMoveZ", vertical);
+        // }
         
         direction = new Vector3(horizontal, 0f, vertical).normalized;
     }
@@ -49,10 +67,11 @@ public class Player : MonoBehaviour
         if(direction.magnitude >= 0.1f)
         {
             body.velocity = new Vector3(direction.x * moveSpeed, body.velocity.y, direction.z * moveSpeed);
+            animator.SetBool("IsMoving", true);
         }
         else
         {
-            body.velocity = new Vector3(0f, body.velocity.y, 0f);
+            animator.SetBool("IsMoving", false);
         }
     }
 }
