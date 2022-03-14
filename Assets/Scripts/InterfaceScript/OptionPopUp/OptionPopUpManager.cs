@@ -5,7 +5,7 @@ using UnityEngine;
 public class OptionPopUpManager : MonoBehaviour
 {
     [SerializeField] private bool isSoundOn = true;
-    [SerializeField] private SoundToggle[] soundToggles;
+    [SerializeField] private SoundButton[] soundButtons;
 
     private void Start()
     {
@@ -20,9 +20,9 @@ public class OptionPopUpManager : MonoBehaviour
 
     private void UpdateSoundToggles()
     {
-        foreach(SoundToggle soundToggle in soundToggles)
+        foreach(SoundButton soundButton in soundButtons)
         {
-            soundToggle.SetSelected(soundToggle.IsOnToggle == isSoundOn);
+            soundButton.SetSelected(soundButton.IsOnButton == isSoundOn);
         }
     }
 }
