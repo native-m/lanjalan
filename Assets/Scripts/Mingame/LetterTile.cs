@@ -25,7 +25,6 @@ public class LetterTile : MonoBehaviour
             {
                 WordManager.Instance.MovetoLetterArea(this);
             }
-            isInAnswer = !isInAnswer;
         }
     }
 
@@ -48,5 +47,10 @@ public class LetterTile : MonoBehaviour
     public int GetTileId()
     {
         return tileId;
+    }
+
+    public void SetIsInAnswer(bool value)
+    {
+        isInAnswer = value;
     }
 }
