@@ -7,14 +7,14 @@ public class Player : MonoBehaviour
     Rigidbody body;
     Vector3 direction = Vector3.zero;
 
-    Animator animator;
+    /*Animator animator;*/
 
     float moveSpeed = 6.0f;
 
     void Start() 
     {
         body = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        /*animator = GetComponent<Animator>();*/
     }
 
     void Update() 
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         // animator.SetFloat("MoveX", horizontal);
         // animator.SetFloat("MoveZ", vertical);
 
-        if (horizontal != 0)
+        /*if (horizontal != 0)
         {
             animator.SetFloat("MoveX", horizontal);
             if (vertical == 0)
@@ -48,16 +48,7 @@ public class Player : MonoBehaviour
         {
             animator.SetFloat("LastMoveX", horizontal);
             animator.SetFloat("LastMoveZ", vertical);
-        }
-
-        // if (horizontal <= -0.5 || horizontal >= 0.5)
-        // {
-        //     animator.SetFloat("LastMoveX", horizontal);
-        // }
-        // if (vertical <= -0.5 || vertical >= 0.5)
-        // {
-        //     animator.SetFloat("LastMoveZ", vertical);
-        // }
+        }*/
         
         direction = new Vector3(horizontal, 0f, vertical).normalized;
     }
@@ -67,11 +58,11 @@ public class Player : MonoBehaviour
         if(direction.magnitude >= 0.1f)
         {
             body.velocity = new Vector3(direction.x * moveSpeed, body.velocity.y, direction.z * moveSpeed);
-            animator.SetBool("IsMoving", true);
+            /*animator.SetBool("IsMoving", true);*/
         }
         else
         {
-            animator.SetBool("IsMoving", false);
+            /*animator.SetBool("IsMoving", false);*/
         }
     }
 }

@@ -30,6 +30,18 @@ public class BlueprintObject : MonoBehaviour
         if(Input.GetMouseButton(0))
         {
             Instantiate(objectPrefab, transform.position, transform.rotation);
+            if (RoomEditManager.Instance != null)
+            {
+                RoomEditManager.Instance.SetPlacingDecor(false);
+            }
+            Destroy(gameObject);
+        }
+        else if (Input.GetMouseButton(1))
+        {
+            if (RoomEditManager.Instance != null)
+            {
+                RoomEditManager.Instance.SetPlacingDecor(false);
+            }
             Destroy(gameObject);
         }
     }
