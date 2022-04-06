@@ -5,64 +5,47 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody body;
-    Vector3 direction = Vector3.zero;
+    CharacterController controller;
+    Vector3 moveDirection = Vector3.zero;
 
-    /*Animator animator;*/
+    private Animator animator;
 
-    float moveSpeed = 6.0f;
+    float moveSpeed = 0.5f;
+
 
     void Start() 
     {
         body = GetComponent<Rigidbody>();
-        /*animator = GetComponent<Animator>();*/
+        controller = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update() 
     {
+        Move();
+    }
+
+    private void Move()
+    {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        // animator.SetFloat("MoveX", horizontal);
-        // animator.SetFloat("MoveZ", vertical);
-
-        /*if (horizontal != 0)
-        {
-            animator.SetFloat("MoveX", horizontal);
-            if (vertical == 0)
-            {
-                animator.SetFloat("MoveZ", vertical);
-            }
-        }
-
-        if (vertical != 0)
-        {
-            animator.SetFloat("MoveZ", vertical);
-
-            if (horizontal == 0)
-            {
-                animator.SetFloat("MoveX", horizontal);
-            }
-        }
-
-        if (horizontal <= -0.5 || horizontal >= 0.5 || vertical <= -0.5 || vertical >= 0.5)
-        {
-            animator.SetFloat("LastMoveX", horizontal);
-            animator.SetFloat("LastMoveZ", vertical);
-        }*/
+        moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
         
-        direction = new Vector3(horizontal, 0f, vertical).normalized;
-    }
-
-    void FixedUpdate() 
-    {
-        if(direction.magnitude >= 0.1f)
+        if(moveDirection.sqrMagnitude >= 0.1)
         {
-            body.velocity = new Vector3(direction.x * moveSpeed, body.velocity.y, direction.z * moveSpeed);
-            /*animator.SetBool("IsMoving", true);*/
+            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
+
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            
+            moveDirection *= moveSpeed;
+            controller.Move(moveDirection * Time.deltaTime);
+
+            animator.SetFloat("MoveSpeed", 1);
         }
         else
         {
-            /*animator.SetBool("IsMoving", false);*/
+            animator.SetFloat("MoveSpeed", 0);
         }
     }
 }
