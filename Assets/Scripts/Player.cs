@@ -4,29 +4,48 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody body;
-    CharacterController controller;
-    Vector3 moveDirection = Vector3.zero;
+    private Rigidbody body;
+    private CharacterController controller;
+    private Vector3 moveDirection = Vector3.zero;
 
     private Animator animator;
 
-    float moveSpeed = 0.5f;
+    private float moveSpeed = 0.5f;
+    
+    [SerializeField] private float gravity = -2f;
+    [SerializeField] private LayerMask groundLayer;
+    private Vector3 fallVelocity = new Vector3(0f, 0.5f, 0f);
+    private bool isGrounded;
+    private float groundDistance = 0.02f;
 
-
-    void Start() 
+    private void Start() 
     {
         body = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
     }
 
-    void Update() 
+    private void Update() 
     {
         Move();
     }
 
     private void Move()
     {
+        // Gravity
+        isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundLayer);
+        if(isGrounded && fallVelocity.y < 0)
+        {
+            fallVelocity.y = 0.5f;
+        }
+        else
+        {
+            float deltaTime = Time.deltaTime;
+            fallVelocity.y += (gravity * deltaTime * deltaTime);
+            controller.Move(fallVelocity);
+        }
+
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 

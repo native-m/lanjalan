@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba1cebd9f4d918409433a333521ea6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 6795666623109457183}
+  gravity: -9.8
 --- !u!143 &34551267058244278
 CharacterController:
   m_ObjectHideFlags: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba1cebd9f4d918409433a333521ea6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  gravity: -9.8
 --- !u!1001 &3806769374377260566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3f7e30d832e0a1a43a1e1ebb2e75af37, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f7e30d832e0a1a43a1e1ebb2e75af37, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f7e30d832e0a1a43a1e1ebb2e75af37, type: 3}

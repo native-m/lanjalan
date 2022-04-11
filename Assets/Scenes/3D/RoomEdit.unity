@@ -153,6 +153,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &250137278
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1606021536998357414, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1768345407622063308, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_Name
+      value: MuseumWithCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633604671331989599, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
 --- !u!1 &330795824
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1433858845
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -784,7 +849,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 40
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -809,13 +874,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665163401}
-  m_LocalRotation: {x: 0.12467977, y: -0, z: -0, w: 0.99219704}
-  m_LocalPosition: {x: 0, y: 9.28, z: -39.51}
+  m_LocalRotation: {x: 0.39377844, y: -0.3676555, z: 0.17568009, w: 0.82395655}
+  m_LocalPosition: {x: 2.239748, y: 3.2628326, z: -0.7257099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 14.325, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.596, y: 0, z: 0}
 --- !u!1 &2073607688
 GameObject:
   m_ObjectHideFlags: 0
