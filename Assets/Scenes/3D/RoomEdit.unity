@@ -186,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
       propertyPath: m_LocalRotation.x
@@ -194,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: -0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
       propertyPath: m_LocalRotation.z
@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: -135
       objectReference: {fileID: 0}
     - target: {fileID: 4210923274061587171, guid: 0b466558b42ff404481b47f7896c4818, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -809,6 +809,7 @@ GameObject:
   - component: {fileID: 1665163404}
   - component: {fileID: 1665163403}
   - component: {fileID: 1665163402}
+  - component: {fileID: 1665163405}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -874,13 +875,25 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665163401}
-  m_LocalRotation: {x: 0.39377844, y: -0.3676555, z: 0.17568009, w: 0.82395655}
-  m_LocalPosition: {x: 2.239748, y: 3.2628326, z: -0.7257099}
+  m_LocalRotation: {x: 0.40536597, y: -0, z: -0, w: 0.9141545}
+  m_LocalPosition: {x: 1, y: 3.5, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 26.596, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.828, y: 0, z: 0}
+--- !u!114 &1665163405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665163401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7314a9f59e8fe4cb0f6432c2890f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2073607688
 GameObject:
   m_ObjectHideFlags: 0
