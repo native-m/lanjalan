@@ -6,7 +6,8 @@ public class BlueprintObject : MonoBehaviour
 {
     [SerializeField] private GameObject objectPrefab;
     private RaycastHit hit;
-    private Vector3 movePoint;
+    [SerializeField] private BlueprintModel blueprintModel;
+
 
     private void Start()
     {
@@ -29,6 +30,11 @@ public class BlueprintObject : MonoBehaviour
 
         if(Input.GetMouseButton(0))
         {
+            if(blueprintModel.IsAnyObjectInside)
+            {
+                return;
+            }
+
             Instantiate(objectPrefab, transform.position, transform.rotation);
             if (RoomEditManager.Instance != null)
             {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1858489762516524465}
   - component: {fileID: 1986150457772370937}
   - component: {fileID: 1450542505092943419}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8986838369049502741}
   - component: {fileID: 8843379756448557896}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BlueprintDummyObjectCylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
