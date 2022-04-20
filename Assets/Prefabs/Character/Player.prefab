@@ -66,7 +66,7 @@ CharacterController:
   m_Radius: 0.05
   m_SlopeLimit: 45
   m_StepOffset: 0.05
-  m_SkinWidth: 0.03
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.08, z: 0}
 --- !u!54 &6755345146642291854
@@ -100,7 +100,7 @@ MonoBehaviour:
   gravity: -9.8
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!1001 &3806769374377260566
 PrefabInstance:
   m_ObjectHideFlags: 0

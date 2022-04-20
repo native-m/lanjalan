@@ -5009,10 +5009,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 34551267058244278, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
-      propertyPath: m_SkinWidth
-      value: 0.0001
-      objectReference: {fileID: 0}
     - target: {fileID: 4041194799453866823, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
       propertyPath: m_Name
       value: Model
@@ -5028,10 +5024,6 @@ PrefabInstance:
     - target: {fileID: 5579251521977639151, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5579251521977639151, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5579251521977639151, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5060,22 +5052,6 @@ PrefabInstance:
     - target: {fileID: 5579251521977639151, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5579251521977639151, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5579251521977639151, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5579251521977639151, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6981959790634379895, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 7669618741552039578, guid: 77e9e44e9e2a1ed4a8befb63d582ab6d, type: 3}
       propertyPath: m_Material
