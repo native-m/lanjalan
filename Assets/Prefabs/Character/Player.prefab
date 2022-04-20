@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -9.8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!143 &34551267058244278
 CharacterController:
   m_ObjectHideFlags: 0
@@ -95,6 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -9.8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &3806769374377260566
 PrefabInstance:
   m_ObjectHideFlags: 0
