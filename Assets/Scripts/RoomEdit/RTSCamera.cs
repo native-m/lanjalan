@@ -65,6 +65,7 @@ public class RTSCamera : MonoBehaviour
 
         //Move Forward and Backward
         tempDirection.y = -50 * Input.GetAxis("Mouse ScrollWheel");
+        tempDirection.z += 50 * Input.GetAxis("Mouse ScrollWheel");
 
         panDirection = tempDirection;
     }
