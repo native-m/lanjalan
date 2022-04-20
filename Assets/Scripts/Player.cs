@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private GameObject characterModelPrefab = null;
+    private GameObject currentCharaModel = null;
+
     private Rigidbody body;
     private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
 
-    private Animator animator;
+    private Animator animator = null;
 
     private float moveSpeed = 0.5f;
     
@@ -22,12 +25,26 @@ public class Player : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
+        SetCharacterModel(characterModelPrefab);
     }
 
     private void Update() 
     {
         Move();
+    }
+
+    private void SetCharacterModel(GameObject modelPrefab)
+    {
+        if(modelPrefab == null)
+        {
+            Destroy(animator);
+            Destroy(currentCharaModel);
+        }
+        else
+        {
+            currentCharaModel = Instantiate(modelPrefab, transform);
+            animator = currentCharaModel.GetComponent<Animator>();
+        }
     }
 
     private void Move()
@@ -60,11 +77,19 @@ public class Player : MonoBehaviour
             moveDirection *= moveSpeed;
             controller.Move(moveDirection * Time.deltaTime);
 
-            animator.SetFloat("MoveSpeed", 1);
+            SetAnimatorVar("MoveSpeed", 1f);
         }
         else
         {
-            animator.SetFloat("MoveSpeed", 0);
+            SetAnimatorVar("MoveSpeed", 0f);
+        }
+    }
+
+    private void SetAnimatorVar(string varName, float value)
+    {
+        if(animator != null)
+        {
+            animator.SetFloat(varName, value);
         }
     }
 }
