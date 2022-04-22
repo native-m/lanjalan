@@ -45,14 +45,17 @@ public class Player : MonoBehaviour
 
     public void SetCharacterModel(string modelPath)
     {
-        if (modelPath == null)
+        if (animator != null)
         {
             Destroy(animator);
+        }
+        if (currentCharaModel != null)
+        {
             Destroy(currentCharaModel);
         }
-        else
+
+        if(modelPath != null)
         {
-            print(modelPath);
             GameObject model = Resources.Load<GameObject>(modelPath);
             if(model == null)
             {
