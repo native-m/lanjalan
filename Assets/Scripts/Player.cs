@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GameObject characterModelPrefab = null;
+    [SerializeField] private string defaultCharaModelPath;
     private GameObject currentCharaModel = null;
 
     private Rigidbody body;
@@ -21,11 +21,11 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     private float groundDistance = 0.02f;
 
-    private void Start() 
+    private void Awake() 
     {
         body = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
-        SetCharacterModel(characterModelPrefab);
+        LoadCharaModelHandler();
     }
 
     private void Update() 
@@ -33,17 +33,37 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    private void SetCharacterModel(GameObject modelPrefab)
+    private void LoadCharaModelHandler()
     {
-        if(modelPrefab == null)
+        string tempPath = PlayerPrefs.GetString("ModelPath");
+        if (tempPath == "")
+        {
+            tempPath = defaultCharaModelPath;
+        }
+        SetCharacterModel(tempPath);
+    }
+
+    public void SetCharacterModel(string modelPath)
+    {
+        if (modelPath == null)
         {
             Destroy(animator);
             Destroy(currentCharaModel);
         }
         else
         {
-            currentCharaModel = Instantiate(modelPrefab, transform);
-            animator = currentCharaModel.GetComponent<Animator>();
+            print(modelPath);
+            GameObject model = Resources.Load<GameObject>(modelPath);
+            if(model == null)
+            {
+                print("Mode Not Found");
+            }
+            else
+            {
+                currentCharaModel = Instantiate(model, transform);
+                animator = currentCharaModel.GetComponent<Animator>();
+                PlayerPrefs.SetString("ModelPath", modelPath);
+            }
         }
     }
 
