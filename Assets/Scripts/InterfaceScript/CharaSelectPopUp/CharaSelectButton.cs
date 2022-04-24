@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharaSelectButton : MonoBehaviour
 {
+    [SerializeField] private Image buttonModelIcon;
     private string charaModelPath;
 
-    public void SetCharaModelButton(string modelPath)
+    public void SetCharaModelButton(Sprite icon)
     {
-        charaModelPath = modelPath;
+        if(icon != null)
+        {
+            buttonModelIcon.sprite = icon;
+        }
     }
 }
