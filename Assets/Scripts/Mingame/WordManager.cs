@@ -37,10 +37,9 @@ public class WordManager : MonoBehaviour
 
     public void MovetoLetterArea(LetterTile tile)
     {
-        int tileIndex = answerSlot.FindIndex((x) => x.GetTileId() == tile.GetTileId());
+        int tileIndex = answerSlot.FindIndex((x) => x.TileId == tile.TileId);
         if(tileIndex != -1)
         {
-            print("found");
             answerSlot[tileIndex].transform.parent = letterArea;
             answerSlot[tileIndex].transform.localPosition = answerSlot[tileIndex].GetInitialPositiion();
             answerSlot.RemoveAt(tileIndex);

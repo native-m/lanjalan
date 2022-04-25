@@ -1,12 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 public class LetterTile : MonoBehaviour
 {
     private int tileId;
+    public int TileId { get { return tileId; } }
     private bool isInAnswer;
     private Vector3 initialPosition = Vector3.zero;
+
+    [SerializeField] private Sprite[] letterSprites;
+    private SpriteRenderer spriteRenderer;
+
+    private char tileLetter;
+    public char TileLetter { get { return tileLetter; } }
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Start()
     {
@@ -28,6 +41,17 @@ public class LetterTile : MonoBehaviour
         }
     }
 
+    private void UpdateLetterSprite()
+    {
+        Regex regAlphabet = new Regex(@"^[a-zA-z]*$");
+        if(!regAlphabet.IsMatch(tileLetter.ToString()))
+        {
+            return;
+        }
+        int spriteIndex = char.ToUpper(tileLetter) - 65;
+        spriteRenderer.sprite = letterSprites[spriteIndex];
+    }
+
     public void SetInitialPositiion(Vector3 initPos)
     {
         initialPosition = initPos;
@@ -39,14 +63,11 @@ public class LetterTile : MonoBehaviour
         return initialPosition;
     }
 
-    public void SetTileId(int id)
+    public void SetTile(int id, char letter)
     {
         tileId = id;
-    }
-
-    public int GetTileId()
-    {
-        return tileId;
+        tileLetter = letter;
+        UpdateLetterSprite();
     }
 
     public void SetIsInAnswer(bool value)
