@@ -2,49 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LetretTileAreaManager : MonoBehaviour
+public class LetterTileAreaController : MonoBehaviour
 {
-    //Temp Database//
-    private List<string> answerList = new List<string>
-    {
-        "BUGISAN",
-        "PRAMBANAN",
-    };
-
     [SerializeField] private GameObject letterTilePrefab;
 
-    private List<char> availableTiles = new List<char>();
+    private List<char> availableChars = new List<char>();
+    private List<GameObject> tileObjects = new List<GameObject>();
     private int tileAmount = 21;
 
-    private void Start()
+    public void InitiateTiles(string answer)
     {
-        GenerateLetterList();
+        ClearTilesAndCharas();
+        GenerateLetterList(answer);
         GenerateTile();
     }
-
-    private void GenerateLetterList()
+    public void ClearTilesAndCharas()
     {
-        availableTiles.Clear();
-        availableTiles.AddRange(answerList[0]);
-        List<char> randomAdditionalChars = GetRandomCharacters(tileAmount - availableTiles.Count);
-        availableTiles.AddRange(randomAdditionalChars);
-        availableTiles = ShuffleList<char>(availableTiles);
+        foreach(GameObject tileObject in tileObjects)
+        {
+            Destroy(tileObject);
+        }
+
+        availableChars.Clear();
+        tileObjects.Clear();
+    }
+
+    private void GenerateLetterList(string answer)
+    {
+        availableChars.AddRange(answer);
+        List<char> randomAdditionalChars = GetRandomCharacters(tileAmount - availableChars.Count);
+        availableChars.AddRange(randomAdditionalChars);
+        availableChars = ShuffleList<char>(availableChars);
     }
 
     private void GenerateTile()
     {
-        float startX = -6f;
-        float startY = 2f;
+        float startX = -4.5f;
+        float startY = 1.5f;
         int tileId = 0;
 
-        for(float indY = startY; indY >= -2f; indY -= 2f)
+        for(float indY = startY; indY >= -1.5f; indY -= 1.5f)
         {
-            for (float indX = startX; indX <= 6f; indX += 2f)
+            for (float indX = startX; indX <= 4.5f; indX += 1.5f)
             {
                 GameObject tempTile = Instantiate(letterTilePrefab, transform);
+                tileObjects.Add(tempTile);
                 LetterTile tempTileScript = tempTile.GetComponent<LetterTile>();
                 tempTileScript.SetInitialPositiion(new Vector3(indX, indY, 0));
-                tempTileScript.SetTile(tileId, availableTiles[tileId]);
+                tempTileScript.SetTile(tileId, availableChars[tileId]);
                 tileId++;
             }
         }
