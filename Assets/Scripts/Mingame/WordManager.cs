@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WordManager : MonoBehaviour
 {
@@ -17,6 +19,14 @@ public class WordManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private GameObject popUpBgLayer;
+    [SerializeField] private GameObject howToPlayLayer;
+    [SerializeField] private GameObject questionLayer;
+    [SerializeField] private GameObject endLayer;
+    [SerializeField] private Text questionText;
+    [SerializeField] private Text questionTimerText;
+    [SerializeField] private Text playerTimerText;
+
     [SerializeField] private LetterTileAreaController letterTileAreaCont;
 
     [SerializeField] private Transform answerArea;
@@ -27,10 +37,19 @@ public class WordManager : MonoBehaviour
     private int currentSlotLimit = 0;
 
     //Temp Database//
+
+    private List<string> questionList = new List<string>
+    {
+        "Apa nama desa ini ?",
+        "Kerajaan apakah ini?",
+        "Siapa raja kerajaan in?",
+    };
+
     private List<string> answerList = new List<string>
     {
         "BUGISAN",
         "PRAMBANAN",
+        "PRABUBAKA",
     };
 
     private int currentAnswerIndex = 0;
@@ -49,10 +68,82 @@ public class WordManager : MonoBehaviour
         }
     }
 
+    private bool isQuestionShown = false;
+    private float questionShownDuration = 10f;
+    private float questionTimer = 0f;
+
+    private TimeSpan timePlaying;
+    private bool isPlayerTimerOn = false;
+    private float playerTimer = 0f;
+
     private void Start()
     {
-        SetUpForCurrentAnswer();
+        popUpBgLayer.SetActive(true);
+        howToPlayLayer.SetActive(true);
+        questionLayer.SetActive(false);
     }
+
+    private void Update()
+    {
+        QuestionTimerHandler();
+        PlayerTimerHandler();
+    }
+
+    public void StartGame()
+    {
+        howToPlayLayer.SetActive(false);
+        popUpBgLayer.SetActive(false);
+        ShowCurrentQuestion();
+        BeginPlayerTimer();
+    }
+    private void ShowCurrentQuestion()
+    {
+        popUpBgLayer.SetActive(true);
+        questionLayer.SetActive(true);
+        questionText.text = questionList[currentAnswerIndex];
+        StartQuestionTimer();
+    }
+
+    private void StartQuestionTimer()
+    {
+        questionTimer = questionShownDuration;
+        isQuestionShown = true;
+    }
+
+    private void QuestionTimerHandler()
+    {
+        if(isQuestionShown)
+        {
+            if(questionTimer > 0)
+            {
+                questionTimer -= Time.deltaTime;
+                int remainingTimeInt = Mathf.CeilToInt(questionTimer);
+                questionTimerText.text = remainingTimeInt.ToString();
+            }
+            else
+            {
+                isQuestionShown = false;
+                questionLayer.SetActive(false);
+                popUpBgLayer.SetActive(false);
+                SetUpForCurrentAnswer();
+            }
+        }
+    }
+
+    private void BeginPlayerTimer()
+    {
+        playerTimer = 0f;
+        isPlayerTimerOn = true;
+    }
+
+    private void PlayerTimerHandler()
+    {
+        if(isPlayerTimerOn)
+        {
+            playerTimer += Time.deltaTime;
+        }
+    }
+
 
     private void SetUpForCurrentAnswer()
     {
@@ -142,11 +233,21 @@ public class WordManager : MonoBehaviour
         if(currentAnswerIndex < answerList.Count - 1)
         {
             currentAnswerIndex++;
-            SetUpForCurrentAnswer();
+            ShowCurrentQuestion();
         }
         else
         {
-            print("Game End");
+            GameEndHandler();
         }
+    }
+
+    private void GameEndHandler()
+    {
+        isPlayerTimerOn = false;
+        popUpBgLayer.SetActive(true);
+        endLayer.SetActive(true);
+        timePlaying = TimeSpan.FromSeconds(Mathf.FloorToInt(playerTimer));
+        string timePlayingStr = timePlaying.ToString();
+        playerTimerText.text = timePlayingStr;
     }
 }
