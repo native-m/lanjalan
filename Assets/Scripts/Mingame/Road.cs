@@ -29,6 +29,7 @@ public class Road : MonoBehaviour
         if(Input.GetMouseButtonUp(0))
         {
             SetRotation(transform.eulerAngles.z + 90);
+            CorrectRotationHandler();
         }
     }
 
@@ -59,6 +60,15 @@ public class Road : MonoBehaviour
             case RoadData.RoadShape.LeftDown:
                 spriteRenderer.sprite = roadSprites[2];
                 break;
+        }
+    }
+
+    private void CorrectRotationHandler()
+    {
+        if(transform.eulerAngles.z == correctRotation)
+        {
+            isRotatable = false;
+            RoadManager.Instance.AddACorrectRoad();
         }
     }
 }

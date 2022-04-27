@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoadManager : MonoBehaviour
 {
@@ -16,6 +18,9 @@ public class RoadManager : MonoBehaviour
             return _instance;
         }
     }
+
+    private int correctAmountReq = 6;
+    private int currectCorrectAmount = 0;
 
     // 7x6 (0-6 and 0-5), start from bottom left
     private List<RoadData> roadDatas = new List<RoadData>()
@@ -73,9 +78,34 @@ public class RoadManager : MonoBehaviour
     [SerializeField] private Transform roadParent;
     [SerializeField] private GameObject roadPrefab;
 
+    [SerializeField] private GameObject popUpBgLayer;
+    [SerializeField] private GameObject howToPlayLayer;
+    [SerializeField] private GameObject endLayer;
+    [SerializeField] private Text playerTimerText;
+
+    private TimeSpan timePlaying;
+    private bool isPlayerTimerOn = false;
+    private float playerTimer = 0f;
+
     private void Start()
     {
+        popUpBgLayer.SetActive(true);
+        howToPlayLayer.SetActive(true);
+        endLayer.SetActive(false);
+    }
+
+    private void Update()
+    {
+        PlayerTimerHandler();   
+    }
+
+    public void StartGame()
+    {
+        print("Start");
+        howToPlayLayer.SetActive(false);
+        popUpBgLayer.SetActive(false);
         LoadRoadArea();
+        BeginPlayerTimer();
     }
 
     private void LoadRoadArea()
@@ -98,5 +128,47 @@ public class RoadManager : MonoBehaviour
                 roadData.initRotation,
                 roadData.correctRotation);
         }
+    }
+
+    public void AddACorrectRoad()
+    {
+        if(currectCorrectAmount >= correctAmountReq)
+        {
+            return;
+        }
+        currectCorrectAmount++;
+        CorrectAmountHandler();
+    }
+
+    private void CorrectAmountHandler()
+    {
+        if(currectCorrectAmount >= correctAmountReq)
+        {
+            GameEndHandler();
+        }
+    }
+
+    private void BeginPlayerTimer()
+    {
+        playerTimer = 0f;
+        isPlayerTimerOn = true;
+    }
+
+    private void PlayerTimerHandler()
+    {
+        if (isPlayerTimerOn)
+        {
+            playerTimer += Time.deltaTime;
+        }
+    }
+
+    private void GameEndHandler()
+    {
+        isPlayerTimerOn = false;
+        popUpBgLayer.SetActive(true);
+        endLayer.SetActive(true);
+        timePlaying = TimeSpan.FromSeconds(Mathf.FloorToInt(playerTimer));
+        string timePlayingStr = timePlaying.ToString();
+        playerTimerText.text = timePlayingStr;
     }
 }
