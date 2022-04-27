@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pipe : MonoBehaviour
+
+public class Road : MonoBehaviour
 {
     /// <summary>
     /// index 0 for straight, 1 for L shape
     /// </summary>
-    [SerializeField] private Sprite[] pipeSprites;
+    ///
+
+    [SerializeField] private Sprite[] roadSprites;
     private SpriteRenderer spriteRenderer;
-    private bool isLShape = false;
+    private RoadData.RoadShape shape = RoadData.RoadShape.None;
     private bool isRotatable = false;
     private float correctRotation;
 
@@ -29,10 +32,10 @@ public class Pipe : MonoBehaviour
         }
     }
 
-    public void Initialize(bool isL, bool isRotate, float rotation, float correctRot)
+    public void Initialize(RoadData.RoadShape roadShape, bool isRotate, float rotation, float correctRot)
     {
-        isLShape = isL;
-        spriteRenderer.sprite = pipeSprites[Convert.ToInt32(isLShape)];
+        shape = roadShape;
+        UpdateRoadSprite();
         isRotatable = isRotate;
         SetRotation(rotation);
         correctRotation = correctRot;
@@ -41,5 +44,21 @@ public class Pipe : MonoBehaviour
     private void SetRotation(float angle)
     {
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle);
+    }
+
+    private void UpdateRoadSprite()
+    {
+        switch(shape)
+        {
+            case RoadData.RoadShape.None:
+                spriteRenderer.sprite = roadSprites[0];
+                break;
+            case RoadData.RoadShape.Horizontal:
+                spriteRenderer.sprite = roadSprites[1];
+                break;
+            case RoadData.RoadShape.LeftDown:
+                spriteRenderer.sprite = roadSprites[2];
+                break;
+        }
     }
 }
