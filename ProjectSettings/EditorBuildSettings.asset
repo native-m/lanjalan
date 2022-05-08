@@ -5,8 +5,8 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+  - enabled: 0
+    path: Assets/Scenes/3D/Chapter1/Chapter1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
     path: Assets/Scenes/MiniGames/Jigsaw.unity
@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MiniGames/Seek.unity
     guid: e677b7069b9227444928786308b42f63
+  - enabled: 0
+    path: Assets/Scenes/3D/RoomEditor.unity
+    guid: 4de8dc4d130092a4a854a390ee581bcd
+  - enabled: 0
+    path: Assets/Scenes/MiniGames/Word.unity
+    guid: 90a395d9aa4666f4dba2cbf5f7dfdeed
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/Roadline.unity
+    guid: 5e9476ec847994d4d87d7bf2458e9330
   m_configObjects: {}

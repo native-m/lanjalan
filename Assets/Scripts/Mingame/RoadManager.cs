@@ -101,7 +101,6 @@ public class RoadManager : MonoBehaviour
 
     public void StartGame()
     {
-        print("Start");
         howToPlayLayer.SetActive(false);
         popUpBgLayer.SetActive(false);
         LoadRoadArea();

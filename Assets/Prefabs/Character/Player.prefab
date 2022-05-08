@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5579251521977639151}
   - component: {fileID: 6981959790634379895}
-  - component: {fileID: 2646251063538727667}
   - component: {fileID: 34551267058244278}
   - component: {fileID: 6755345146642291854}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +29,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1772059278899256570}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,23 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba1cebd9f4d918409433a333521ea6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCharaModelPath: Characters/Mixamo/Laki1/Perempuan1Fix
-  gravity: -9.8
+  characterModels:
+  - {fileID: 9219545155532043265, guid: 3cc9397564eb1b0489cc9bbc792c0077, type: 3}
+  - {fileID: 5159603151945158198, guid: 853547737cc17f046b26e0b2ab0796aa, type: 3}
+  gravity: -10000
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
---- !u!114 &2646251063538727667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5579251521977639139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65cb9789e2129a94e8eb4de1d7479523, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &34551267058244278
 CharacterController:
   m_ObjectHideFlags: 0
@@ -76,9 +66,9 @@ CharacterController:
   serializedVersion: 2
   m_Height: 0.2
   m_Radius: 0.05
-  m_SlopeLimit: 60
-  m_StepOffset: 0.05
-  m_SkinWidth: 0.0001
+  m_SlopeLimit: 45
+  m_StepOffset: 0.0001
+  m_SkinWidth: 0.06
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.08, z: 0}
 --- !u!54 &6755345146642291854
@@ -94,6 +84,36 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!1 &6652210411586521906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1772059278899256570}
+  m_Layer: 3
+  m_Name: ViewPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1772059278899256570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652210411586521906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5579251521977639151}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

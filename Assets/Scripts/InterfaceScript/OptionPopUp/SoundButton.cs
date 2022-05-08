@@ -18,7 +18,6 @@ public class SoundButton : MonoBehaviour
 
     public void SetSelected(bool _isSelected)
     {
-        print(isOnButton.ToString() + " " + _isSelected.ToString());
         checkmarkImage.enabled = _isSelected;
         button.interactable = !_isSelected;
     }

@@ -19,14 +19,19 @@ public class StoryPopUpManager : MonoBehaviour
     [SerializeField] private Transform chapterButtonParent;
     [SerializeField] private GameObject chapterButton;
 
-    private void Start()
+    private void OnEnable()
     {
-        for(int bttnIndex = 0; bttnIndex < buttonsText.Length; bttnIndex++)
+        for (int bttnIndex = 0; bttnIndex < buttonsText.Length; bttnIndex++)
         {
             GameObject newChButtonObj = Instantiate(chapterButton, chapterButtonParent);
             ChapterButton newChButton = newChButtonObj.GetComponent<ChapterButton>();
 
             newChButton.SetButton(buttonsText[bttnIndex], areButtonsUnlocked[bttnIndex]);
         }
+    }
+
+    private void Start()
+    {
+        
     }
 }

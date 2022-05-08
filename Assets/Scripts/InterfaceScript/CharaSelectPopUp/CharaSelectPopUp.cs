@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CharaSelectPopUp : MonoBehaviour
 {
-    [SerializeField] private string[] charaModelPaths;
+    [SerializeField] private int[] charaModelIndexs;
     [SerializeField] private Sprite[] charaModelIcons;
     [SerializeField] private GameObject charaSelectButton;
     [SerializeField] private Transform charaSelectButtonParent;
@@ -19,22 +19,22 @@ public class CharaSelectPopUp : MonoBehaviour
 
     private void InititateCharaSelection()
     {
-        for(int ind = 0; ind < charaModelPaths.Length; ind++)
+        for(int ind = 0; ind < charaModelIndexs.Length; ind++)
         {
             GameObject buttonObj = Instantiate(charaSelectButton, charaSelectButtonParent);
-            string tempModelPath = charaModelPaths[ind];
+            int tempModelIndex = charaModelIndexs[ind];
             Sprite tempModelIcon = null;
             if(ind < charaModelIcons.Length)
             {
                 tempModelIcon = charaModelIcons[ind];
             }
-            buttonObj.GetComponent<Button>().onClick.AddListener(() => ChangeCharaModel(tempModelPath));
+            buttonObj.GetComponent<Button>().onClick.AddListener(() => ChangeCharaModel(tempModelIndex));
             buttonObj.GetComponent<CharaSelectButton>().SetCharaModelButton(tempModelIcon);
         }
     }
 
-    private void ChangeCharaModel(string modelPath)
+    private void ChangeCharaModel(int modelIndex)
     {
-        player.SetCharacterModel(modelPath);
+        player.SetCharacterModel(modelIndex);
     }
 }

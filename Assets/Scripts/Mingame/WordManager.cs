@@ -40,9 +40,9 @@ public class WordManager : MonoBehaviour
 
     private List<string> questionList = new List<string>
     {
-        "Apa nama desa ini ?",
+        "Apa nama desa ini?",
         "Kerajaan apakah ini?",
-        "Siapa raja kerajaan in?",
+        "Siapa raja kerajaan ini?",
     };
 
     private List<string> answerList = new List<string>

@@ -27,6 +27,10 @@ public class BlueprintModel : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            return;
+        }
         isAnyObjectInside = false;
     }
 }

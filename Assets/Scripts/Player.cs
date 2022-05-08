@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private string defaultCharaModelPath;
+    [SerializeField] private GameObject[] characterModels;
     private GameObject currentCharaModel = null;
+    private int currentModelIndex = -1;
 
     private Rigidbody body;
     private CharacterController controller;
@@ -31,19 +32,16 @@ public class Player : MonoBehaviour
     private void Update() 
     {
         Move();
+        /*print(body.velocity);*/
     }
 
     private void LoadCharaModelHandler()
     {
-        string tempPath = PlayerPrefs.GetString("ModelPath");
-        if (tempPath == "")
-        {
-            tempPath = defaultCharaModelPath;
-        }
-        SetCharacterModel(tempPath);
+        int tempIndex = PlayerPrefs.GetInt("ModelIndex");
+        SetCharacterModel(tempIndex);
     }
 
-    public void SetCharacterModel(string modelPath)
+    public void SetCharacterModel(int index)
     {
         if (animator != null)
         {
@@ -54,19 +52,17 @@ public class Player : MonoBehaviour
             Destroy(currentCharaModel);
         }
 
-        if(modelPath != null)
+        GameObject model = characterModels[index];
+        if (model == null)
         {
-            GameObject model = Resources.Load<GameObject>(modelPath);
-            if(model == null)
-            {
-                print("Mode Not Found");
-            }
-            else
-            {
-                currentCharaModel = Instantiate(model, transform);
-                animator = currentCharaModel.GetComponent<Animator>();
-                PlayerPrefs.SetString("ModelPath", modelPath);
-            }
+            print("Mode Not Found");
+        }
+        else
+        {
+            currentCharaModel = Instantiate(model, transform);
+            currentModelIndex = index;
+            animator = currentCharaModel.GetComponent<Animator>();
+            PlayerPrefs.SetInt("ModelIndex", index);
         }
     }
 
@@ -82,6 +78,7 @@ public class Player : MonoBehaviour
         {
             float deltaTime = Time.deltaTime;
             fallVelocity.y += (gravity * deltaTime * deltaTime);
+            fallVelocity = AdjustVelocityToSlope(fallVelocity);
             controller.Move(fallVelocity);
         }
 
@@ -106,6 +103,24 @@ public class Player : MonoBehaviour
         {
             SetAnimatorVar("MoveSpeed", 0f);
         }
+    }
+
+    private Vector3 AdjustVelocityToSlope(Vector3 velocity)
+    {
+        var ray = new Ray(transform.position, Vector3.down);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 0.0001f))
+        {
+            var slopeRotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            var adjustedVelocity = slopeRotation * velocity;
+
+            if (adjustedVelocity.y < 0)
+            {
+                return adjustedVelocity;
+            }
+        }
+
+        return velocity;
     }
 
     private void SetAnimatorVar(string varName, float value)

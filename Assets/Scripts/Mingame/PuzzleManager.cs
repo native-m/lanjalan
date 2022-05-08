@@ -16,7 +16,6 @@ public class PuzzleManager : MonoBehaviour
     public void AddScore()
     {
         score +=1;
-        print(score);
     }
 
     public void ResetGame()

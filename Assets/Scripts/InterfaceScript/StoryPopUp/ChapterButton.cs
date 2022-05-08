@@ -18,8 +18,8 @@ public class ChapterButton : MonoBehaviour
 
     public void SetButton(string buttonString, bool isUnlocked)
     {
-        buttonText.text = buttonString;
+        /*buttonText.text = buttonString;
         button.interactable = isUnlocked;
-        buttonImage.sprite = buttonSprites[System.Convert.ToInt32(isUnlocked)];
+        buttonImage.sprite = buttonSprites[System.Convert.ToInt32(isUnlocked)];*/
     }
 }
