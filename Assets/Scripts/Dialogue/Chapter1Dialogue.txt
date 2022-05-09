@@ -1,0 +1,27 @@
+[title=defaultStart]
+... : .....
+[title=defaultEnd]
+
+[title=defaultPriaStart]
+Penduduk Pria : .....
+[title=defaultPriaEnd]
+
+[title=defaultWanitaStart]
+Penduduk Wanita : .....
+[title=defaultWanitaEnd]
+
+[title=defaultRoroStart]
+Roro : .....
+[title=defaultRoroEnd]
+
+[title=defaultKepalaDesaStart]
+Kepala Desa : .....
+[title=defaultKepalaDesaEnd]
+
+[title=kepalaDesaStart]
+Bayu : Halo... ini dimana?
+Kepala Desa : Selamat datang di Desa Bungurasih, Ini adalah Kerajaan Prambanan
+Bayu: Wahh... Siapakah rajanya ?
+Kepala Desa : Kerajaan ini dipimpin oleh Prabu Baka dan Putrinya yang cantik dan bijaksana bernama Roro Jonggrang 
+Bayu : Terima kasih 
+[title=kepalaDesaEnd]

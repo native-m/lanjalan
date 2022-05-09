@@ -160,9 +160,10 @@ public class Player : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position + centerPoint, interactRadius, 1<<LayerMask.NameToLayer("NPC"));
         if(colliders.Length > 0)
         {
+            NPC npc = colliders[0].GetComponent<NPC>();
             isInteracting = true;
             canInteract = false;
-            Chapter1Manager.Instance.StartInteract("cutscene1_start", "cutscene1_end");
+            Chapter1Manager.Instance.StartInteract(npc.DialogueStart, npc.DialogueEnd);
         }
     }
 
