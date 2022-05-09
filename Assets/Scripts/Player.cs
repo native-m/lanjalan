@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     private GameObject currentCharaModel = null;
     private int currentModelIndex = -1;
 
-    private Rigidbody body;
     private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
 
@@ -22,9 +21,13 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     private float groundDistance = 0.02f;
 
+    private Vector3 centerPoint = new Vector3(0f, 0.1f, 0f);
+    private float interactRadius = 0.15f;
+    private bool isInteracting = false;
+    private bool canInteract = true;
+
     private void Awake() 
     {
-        body = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         LoadCharaModelHandler();
     }
@@ -32,7 +35,11 @@ public class Player : MonoBehaviour
     private void Update() 
     {
         Move();
-        /*print(body.velocity);*/
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Interact();
+        }
     }
 
     private void LoadCharaModelHandler()
@@ -82,11 +89,18 @@ public class Player : MonoBehaviour
             controller.Move(fallVelocity);
         }
 
-
+        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
+        if (isInteracting)
+        {
+            moveDirection = Vector3.zero;
+        }
+        else
+        {
+            moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
+        }
         
         if(moveDirection.sqrMagnitude >= 0.1)
         {
@@ -129,5 +143,45 @@ public class Player : MonoBehaviour
         {
             animator.SetFloat(varName, value);
         }
+    }
+
+    private void Interact()
+    {
+        if (isInteracting)
+        {
+            return;
+        }
+
+        if (!canInteract)
+        {
+            return;
+        }
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position + centerPoint, interactRadius, 1<<LayerMask.NameToLayer("NPC"));
+        if(colliders.Length > 0)
+        {
+            isInteracting = true;
+            canInteract = false;
+            Chapter1Manager.Instance.StartInteract("cutscene1_start", "cutscene1_end");
+        }
+    }
+
+    public void PostInteractHandler()
+    {
+        isInteracting = false;
+        StartCoroutine(ReenableInteract());
+    }
+
+    IEnumerator ReenableInteract()
+    {
+        yield return new WaitForEndOfFrame();
+        canInteract = true;
+    }
+
+    //Debugging
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + centerPoint, interactRadius);
     }
 }
