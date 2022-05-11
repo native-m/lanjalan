@@ -1,5 +1,5 @@
 [title=defaultStart]
-... : .....
+...
 [title=defaultEnd]
 
 [title=defaultPriaStart]
@@ -19,9 +19,9 @@ Kepala Desa : .....
 [title=defaultKepalaDesaEnd]
 
 [title=kepalaDesaStart]
-Bayu : Halo... ini dimana?
+Pemain : Halo... ini dimana?
 Kepala Desa : Selamat datang di Desa Bungurasih, Ini adalah Kerajaan Prambanan
-Bayu: Wahh... Siapakah rajanya ?
+Pemain : Wahh... Siapakah rajanya ?
 Kepala Desa : Kerajaan ini dipimpin oleh Prabu Baka dan Putrinya yang cantik dan bijaksana bernama Roro Jonggrang 
-Bayu : Terima kasih 
+Pemain : Terima kasih 
 [title=kepalaDesaEnd]

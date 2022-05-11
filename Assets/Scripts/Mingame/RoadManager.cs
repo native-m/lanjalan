@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RoadManager : MonoBehaviour
@@ -169,5 +170,14 @@ public class RoadManager : MonoBehaviour
         timePlaying = TimeSpan.FromSeconds(Mathf.FloorToInt(playerTimer));
         string timePlayingStr = timePlaying.ToString();
         playerTimerText.text = timePlayingStr;
+    }
+
+    public void BackToChapter1()
+    {
+        SceneManager.LoadScene(0);
+        if (Chapter1Manager.Instance != null)
+        {
+            Chapter1Manager.Instance.OutFromMinigame();
+        }
     }
 }

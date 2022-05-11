@@ -32,6 +32,14 @@ public class Player : MonoBehaviour
         LoadCharaModelHandler();
     }
 
+    private void Start()
+    {
+        if(Chapter1Manager.Instance != null)
+        {
+            transform.position = Chapter1Manager.Instance.PlayerInteractPosition;
+        }
+    }
+
     private void Update() 
     {
         Move();
@@ -163,7 +171,7 @@ public class Player : MonoBehaviour
             NPC npc = colliders[0].GetComponent<NPC>();
             isInteracting = true;
             canInteract = false;
-            Chapter1Manager.Instance.StartInteract(npc.DialogueStart, npc.DialogueEnd);
+            Chapter1Manager.Instance.StartInteract(npc.DialogueStart, npc.DialogueEnd, npc.IsDialogueMainStory);
         }
     }
 
