@@ -20,7 +20,7 @@ Kepala Desa : .....
 
 [title=kepalaDesaStart]
 Pemain : Halo... ini dimana?
-Kepala Desa : Selamat datang di Desa Bungurasih, Ini adalah Kerajaan Prambanan
+Kepala Desa : Selamat datang di Desa Bugisan, Ini adalah Kerajaan Prambanan
 Pemain : Wahh... Siapakah rajanya ?
 Kepala Desa : Kerajaan ini dipimpin oleh Prabu Baka dan Putrinya yang cantik dan bijaksana bernama Roro Jonggrang 
 Pemain : Terima kasih 
