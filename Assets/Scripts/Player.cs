@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     private Vector3 fallVelocity = new Vector3(0f, 0.5f, 0f);
     private bool isGrounded;
-    private float groundDistance = 0.02f;
+    private float groundDistance = 0.01f;
 
     private Vector3 centerPoint = new Vector3(0f, 0.1f, 0f);
     private float interactRadius = 0.15f;

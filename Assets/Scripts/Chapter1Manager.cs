@@ -21,7 +21,7 @@ public class Chapter1Manager : MonoBehaviour
     {
         {"KepalaDesa", new NPCData
             (
-                new Vector3(-1.4f, -0.3f, -1.2f),
+                new Vector3(-1.4f, -0.32f, -1.2f),
                 new Quaternion(0.0f, 0.8f, 0.0f, 0.6f),
                 "kepalaDesaStart",
                 "kepalaDesaEnd",
@@ -30,7 +30,7 @@ public class Chapter1Manager : MonoBehaviour
         },
         {"Roro", new NPCData
             (
-                new Vector3(0.8f, -0.3f, -1.1f),
+                new Vector3(0.8f, -0.32f, -1.1f),
                 new Quaternion(0.0f, 1f, 0.0f, -0.2f),
                 "defaultRoroStart",
                 "defaultRoroEnd",
@@ -104,7 +104,7 @@ public class Chapter1Manager : MonoBehaviour
         {
             SceneManager.LoadScene(2);
             mainStoryIndex++;
-            NPCDatabase["Roro"].position = new Vector3(2.7f, -0.3f, 1.5f);
+            NPCDatabase["Roro"].position = new Vector3(2.97f, -0.32f, 1.47f);
         }
         else if (mainStoryIndex == 5)
         {
