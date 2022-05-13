@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - AdditionalDecor
+  - CutscenePanel
   layers:
   - Default
   - TransparentFX

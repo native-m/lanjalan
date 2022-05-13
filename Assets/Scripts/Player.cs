@@ -44,6 +44,14 @@ public class Player : MonoBehaviour
     {
         Move();
 
+        if (Chapter1Manager.Instance != null)
+        {
+            if(Chapter1Manager.Instance.IsCutscenePlaying)
+            {
+                return;
+            }
+        }
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             Interact();

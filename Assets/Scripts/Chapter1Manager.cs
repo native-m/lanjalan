@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,13 @@ public class Chapter1Manager : MonoBehaviour
     private int mainStoryIndex = 0;
 
     private bool isOnMinigame = false;
+
+    [SerializeField] private VideoClip[] cutsceneVideos;
+    private GameObject cutscenePanel;
+    private VideoPlayer videoPlayer;
+    private bool isCutscenePlaying = false;
+    public bool IsCutscenePlaying { get { return isCutscenePlaying; } }
+    private int cutsceneIndex = 0;
 
     public Dictionary<string, NPCData> NPCDatabase { private set; get; } = new Dictionary<string, NPCData>()
     {
@@ -75,6 +83,18 @@ public class Chapter1Manager : MonoBehaviour
         {
             player = FindObjectOfType<Player>();
         }
+        if(cutscenePanel == null)
+        {
+            cutscenePanel = GameObject.FindGameObjectWithTag("CutscenePanel");
+        }
+        if(videoPlayer == null)
+        {
+            videoPlayer = FindObjectOfType<VideoPlayer>();
+            if(videoPlayer != null)
+            {
+                videoPlayer.loopPointReached += PostPlayCutscene;
+            }
+        }
     }
 
     public void StartInteract(string start, string end, bool isMainStory)
@@ -117,5 +137,30 @@ public class Chapter1Manager : MonoBehaviour
     public void OutFromMinigame()
     {
         isOnMinigame = false;
+        StartCoroutine(CheckIfPlayCutscene());
+    }
+
+    IEnumerator CheckIfPlayCutscene()
+    {
+        yield return new WaitUntil(() => videoPlayer != null && cutscenePanel != null);
+        if (mainStoryIndex == 2)
+        {
+            PlayCutscene();
+        }
+    }
+
+    private void PlayCutscene()
+    {
+        cutscenePanel.transform.GetChild(0).gameObject.SetActive(true);
+        Time.timeScale = 0f;
+        videoPlayer.clip = cutsceneVideos[cutsceneIndex];
+        videoPlayer.Play();
+    }
+
+    private void PostPlayCutscene(VideoPlayer vp)
+    {
+        cutsceneIndex++;
+        cutscenePanel.transform.GetChild(0).gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
