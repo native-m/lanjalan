@@ -5,7 +5,7 @@ using UnityEngine;
 public class RTSCamera : MonoBehaviour
 {
     private float panSpeed = 2f;
-    private float panBorderThickness = 40f;
+    private float panBorderThickness = 30f;
     private Vector3 panDirection = Vector3.zero;
     private Rect screenRect;
 

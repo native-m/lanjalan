@@ -105,6 +105,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -751,6 +752,33 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ezgif.com-gif-maker (1)_23: -8846343429731164921
+      ezgif.com-gif-maker (1)_3: -7458982963906360784
+      ezgif.com-gif-maker (1)_22: -2120384510359204111
+      ezgif.com-gif-maker (1)_7: 7791262819983882499
+      ezgif.com-gif-maker (1)_6: -6623594924128421203
+      ezgif.com-gif-maker (1)_2: -7249430012921954511
+      ezgif.com-gif-maker (1)_9: 5417883462495597884
+      ezgif.com-gif-maker (1)_14: -6883640556570919552
+      ezgif.com-gif-maker (1)_13: 7878283737752787609
+      ezgif.com-gif-maker (1)_18: 4985446541026685951
+      ezgif.com-gif-maker (1)_25: -5466712162326706905
+      ezgif.com-gif-maker (1)_5: 7343336956831097597
+      ezgif.com-gif-maker (1)_20: 911837858753134242
+      ezgif.com-gif-maker (1)_19: -7170064223377782939
+      ezgif.com-gif-maker (1)_24: -6801367301517889734
+      ezgif.com-gif-maker (1)_12: 2701599124390602733
+      ezgif.com-gif-maker (1)_11: 5349512826217981496
+      ezgif.com-gif-maker (1)_4: 2828206487452950891
+      ezgif.com-gif-maker (1)_0: -634939176177036431
+      ezgif.com-gif-maker (1)_1: 1291146559195552984
+      ezgif.com-gif-maker (1)_16: 52755155562801969
+      ezgif.com-gif-maker (1)_17: -7270611986194033558
+      ezgif.com-gif-maker (1)_15: -3612094868450824868
+      ezgif.com-gif-maker (1)_21: 2666439674229122741
+      ezgif.com-gif-maker (1)_8: 241785388218342967
+      ezgif.com-gif-maker (1)_10: 472873386604557783
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
