@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private GameObject currentCharaModel = null;
     private int currentModelIndex = -1;
 
+    private DialogCameraManager dialogCamManager = null;
+
     private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
 
@@ -37,6 +39,16 @@ public class Player : MonoBehaviour
         if(Chapter1Manager.Instance != null)
         {
             transform.position = Chapter1Manager.Instance.PlayerInteractPosition;
+        }
+
+        if (dialogCamManager == null)
+        {
+            GameObject dialogCamOperator = GameObject.Find("DialogCamera");
+
+            if (dialogCamOperator != null)
+            {
+                dialogCamManager = dialogCamOperator.GetComponent<DialogCameraManager>();
+            }
         }
     }
 
@@ -179,6 +191,7 @@ public class Player : MonoBehaviour
             NPC npc = colliders[0].GetComponent<NPC>();
             isInteracting = true;
             canInteract = false;
+            dialogCamManager.ActivateCamera("DialogCam0");
             Chapter1Manager.Instance.StartInteract(npc.DialogueStart, npc.DialogueEnd, npc.IsDialogueMainStory);
         }
     }
